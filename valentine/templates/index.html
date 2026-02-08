@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dear Future Husband, 💖</title>
+    <p>I just want to say thank you in advance for choosing me.I won't say we will never fight or that every day will full of love and sparks.
+    We will have good days and bad days,and days that feel dull and empty.
+    But promise me one thing that,you will continue to choose me when life gets tough,when you are annoyed,even when I stay mad,even when we both get bored.
+    Just promise me you will never leave me and comfort me with your hug.
+    I know I won't make it easy for you.I will test your patience.
+    You are not just becoming my hustband.You are becoming my future,So please be good 😍.I trust you and don't skip our chayakudi and night walk</p>
+
+  <style>
+    body {
+      background: linear-gradient(to right, pink, lightcoral);
+      text-align: center;
+      font-family: Arial;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 { margin-top: 70px; }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    .yes {
+      background-color: red;
+      color: white;
+      left: 40%;
+      top: 55%;
+    }
+
+    .no {
+      background-color: gray;
+      color: white;
+      left: 55%;
+      top: 55%;
+    }
+
+    /* ❤️ Heart rain */
+    .heart {
+      position: fixed;
+      top: -10px;
+      color: red;
+      font-size: 24px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 Romantic Music -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>💖Lets make a lifetime of memories 💖</h1>
+  <h2>Will you marry me? 😍</h2>
+
+  <form method="POST">
+    <button class="yes" name="choice" value="yes">YES 💕</button>
+  </form>
+
+  <button class="no" onmouseover="moveButton()">NO 🙈</button>
+
+  {% if answer == "yes" %}
+    <canvas id="fireworks"></canvas>
+    <h2 style="margin-top: 300px;">
+      🎉 Yayyy!!! 💍💖 <br>
+
+    </h2>
+  {% endif %}
+
+  <script>
+    /* 😂 Moving NO button */
+    function moveButton() {
+      const btn = document.querySelector(".no");
+      btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+      btn.style.top = Math.random() * (window.innerHeight - 100) + "px";
+    }
+
+    /* ❤️ Heart rain */
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 300);
+
+    /* 🎆 Fireworks */
+    const canvas = document.getElementById("fireworks");
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      function firework() {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height / 2;
+        for (let i = 0; i < 60; i++) {
+          ctx.beginPath();
+          ctx.arc(x, y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = `hsl(${Math.random()*360},100%,50%)`;
+          ctx.fill();
+        }
+      }
+      setInterval(firework, 400);
+    }
+  </script>
+
+</body>
+</html>
